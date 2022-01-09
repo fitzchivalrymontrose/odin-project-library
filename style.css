@@ -2,7 +2,7 @@
     box-sizing: border-box;
     padding: 0;
     margin: 0;
-    font-family: 'Luxurious Roman', cursive;
+    font-family: 'Luxurious Roman', sans-serif;
 }
 
 body {
@@ -35,8 +35,20 @@ main {
 }
 
 table {
-    border: indigo solid 1px;
+    border: indigo solid 2px;
     background-color: lightslategray;
+}
+
+thead {
+    border: 2px solid indigo;
+}
+
+th {
+    border: 2px solid indigo;
+}
+
+tr {
+    border: 1px solid indigo;
 }
 
 footer {
