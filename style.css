@@ -24,7 +24,19 @@ footer {
 }
 
 main {
+    outline: 1px red solid;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    padding: 2% 8%;
+}
 
+table {
+    border: indigo solid 1px;
+    background-color: lightslategray;
 }
 
 footer {
