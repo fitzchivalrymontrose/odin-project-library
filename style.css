@@ -32,6 +32,7 @@ main {
     align-items: stretch;
     justify-content: flex-start;
     padding: 2% 8%;
+    gap: 5px;
 }
 
 table {
@@ -49,6 +50,12 @@ th {
 
 tr {
     border: 1px solid indigo;
+}
+
+#add-book {
+    height: 40px;
+    width: fit-content;
+    padding: 1em 2em;
 }
 
 footer {

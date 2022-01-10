@@ -48,6 +48,9 @@ function addBookToDisplay(book) {
         info.textContent = elem;
         bookRow.appendChild(info);
     });
+    let removeBtn = document.createElement('button');
+    removeBtn.textContent = 'x'
+    bookRow.appendChild(removeBtn);    
     shelf.appendChild(bookRow);
 }
 
