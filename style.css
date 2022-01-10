@@ -36,20 +36,24 @@ main {
 }
 
 table {
-    border: indigo solid 2px;
+    /* border: indigo solid 2px; */
     background-color: lightslategray;
 }
 
 thead {
-    border: 2px solid indigo;
+    background-color: lightgrey;
 }
 
 th {
-    border: 2px solid indigo;
+    
 }
 
 tr {
     border: 1px solid indigo;
+}
+
+tr:nth-child(even) {
+    background-color: lightgrey;
 }
 
 #add-book {
