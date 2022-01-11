@@ -40,12 +40,13 @@ table {
     background-color: lightslategray;
 }
 
-thead {
-    background-color: lightgrey;
+thead tr{
+    background-color: rgb(233, 242, 252);
+    
 }
 
-th {
-    
+thead tr th {
+    padding: .5em 0;
 }
 
 tr {
