@@ -24,8 +24,8 @@
                     <th>Author</th>
                     <th>Page Count</th>
                     <th>Year Published</th>
-                    <th><input type="checkbox" id="haveRead" name="haveRead"><label for="haveRead">Finished Reading</label></th>
-                    <th></th>
+                    <th colspan="2">Finished Reading</th>
+                    
                 </tr>
             </thead>
             <tbody id="table-data">
@@ -34,8 +34,15 @@
         </table>
         <button id="add-book">Add a book</button>
         <form>
+            <label for="title">Book Title</label><br>
+            <input type="text" id="title" name="title"><br>
             <label for="author-name">Author Name</label><br>
             <input type="text" id="author-name" name="author-name"><br>
+            <label for="page-count">Page Count</label><br>
+            <input type="text" id="page-count" name="page-count"><br>
+            <label for="pub-year">Publication Year</label><br>
+            <input type="text" id="pub-year" name="pub-year"><br>
+            <input type="submit" id="submit-add-book" value="Add Book"><br>
         </form>
     </main>
     

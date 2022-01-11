@@ -33,8 +33,13 @@ function addNewBook(e){
     // make add button invisible
 }
 
+const submitBookBtn = document.querySelector('#submit-add-book');
+submitBookBtn.addEventListener('click', createBookFromForm);
+
 // use form data to populate library
-function createBookFromForm(){
+function createBookFromForm(e){
+    e.preventDefault();
+    console.log('it kinda works');
     // take inputs from form and add to a book object
     // add book object to myLib
     // update display
@@ -44,13 +49,7 @@ function createBookFromForm(){
 
 // remove button functionality
 function removeBook(e){
-    console.log(myLib);
-    console.log('book removed');
-    console.log(e.target.parentElement.getAttribute('idNum'))
-    
-
     delete myLib[e.target.parentElement.getAttribute('idNum')];
-    
     myLib = myLib.filter(el => {
         return el != null;
     });
@@ -59,10 +58,6 @@ function removeBook(e){
     });
     shelf.innerHTML = '';
     displayLib();
-
-    console.log(myLib);
-    // remove current book from myLib
-    // update display
 }
 
 function addBookToLibrary(book){
