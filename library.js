@@ -22,18 +22,18 @@ class Book{
     }
 }
 
-const myLib = [];
+let myLib = [];
 const shelf = document.querySelector("#table-data");
 
 const addBtn =  document.querySelector('#add-book');
-const removeBtn = document.querySelector('.remove-btn');
-
 addBtn.addEventListener('click', addNewBook);
+
 function addNewBook(e){
     // make form visible
     // make add button invisible
 }
 
+// use form data to populate library
 function createBookFromForm(){
     // take inputs from form and add to a book object
     // add book object to myLib
@@ -42,8 +42,25 @@ function createBookFromForm(){
     // make add button visible
 }
 
-removeBtn.addEventListener('click', removeBook);
+// remove button functionality
 function removeBook(e){
+    console.log(myLib);
+    console.log('book removed');
+    console.log(e.target.parentElement.getAttribute('idNum'))
+    
+
+    delete myLib[e.target.parentElement.getAttribute('idNum')];
+    
+    myLib = myLib.filter(el => {
+        return el != null;
+    });
+    myLib.forEach(book => {
+        book.id = `${myLib.indexOf(book)}`;
+    });
+    shelf.innerHTML = '';
+    displayLib();
+
+    console.log(myLib);
     // remove current book from myLib
     // update display
 }
@@ -76,8 +93,9 @@ function addBookToDisplay(book) {
     removeBtn.textContent = 'x'
     bookRow.appendChild(removeBtn);    
     shelf.appendChild(bookRow);
+    // const removeBtn = document.querySelector('.remove-btn');
+    removeBtn.addEventListener('click', removeBook);
 }
-
 
 
 
