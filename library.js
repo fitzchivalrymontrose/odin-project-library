@@ -1,8 +1,5 @@
 'use strict';
 
-let myLib = [];
-const shelf = document.querySelector("#table-data");
-
 class Book{
     constructor(title, author, pages, year){
         this.title = title;
@@ -23,6 +20,32 @@ class Book{
     tellAll(){
         return [this.title, this.author, this.pages, this.year, this.finishedReading];
     }
+}
+
+const myLib = [];
+const shelf = document.querySelector("#table-data");
+
+const addBtn =  document.querySelector('#add-book');
+const removeBtn = document.querySelector('.remove-btn');
+
+addBtn.addEventListener('click', addNewBook);
+function addNewBook(e){
+    // make form visible
+    // make add button invisible
+}
+
+function createBookFromForm(){
+    // take inputs from form and add to a book object
+    // add book object to myLib
+    // update display
+    // make form invisible
+    // make add button visible
+}
+
+removeBtn.addEventListener('click', removeBook);
+function removeBook(e){
+    // remove current book from myLib
+    // update display
 }
 
 function addBookToLibrary(book){
@@ -49,6 +72,7 @@ function addBookToDisplay(book) {
         bookRow.appendChild(info);
     });
     let removeBtn = document.createElement('button');
+    removeBtn.classList.add('remove-btn');
     removeBtn.textContent = 'x'
     bookRow.appendChild(removeBtn);    
     shelf.appendChild(bookRow);
