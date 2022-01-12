@@ -36,13 +36,22 @@ function addNewBook(e){
 const submitBookBtn = document.querySelector('#submit-add-book');
 submitBookBtn.addEventListener('click', createBookFromForm);
 
+const formBookData = document.querySelector('#book-form');
+function clearFormData(){
+    formBookData.title.value = '';
+    formBookData['author-name'].value = '';
+    formBookData['page-count'].value = '';
+    formBookData['pub-year'].value = '';
+}
+
 // use form data to populate library
 function createBookFromForm(e){
     e.preventDefault();
     console.log('it kinda works');
-    // take inputs from form and add to a book object
-    // add book object to myLib
-    // update display
+    let book = new Book(formBookData.title.value, formBookData['author-name'].value, formBookData['page-count'].value, formBookData['pub-year'].value);
+    addBookToLibrary(book);
+    displayLib();
+    clearFormData();
     // make form invisible
     // make add button visible
 }
@@ -56,7 +65,6 @@ function removeBook(e){
     myLib.forEach(book => {
         book.id = `${myLib.indexOf(book)}`;
     });
-    shelf.innerHTML = '';
     displayLib();
 }
 
@@ -65,11 +73,8 @@ function addBookToLibrary(book){
     book.id = `${myLib.indexOf(book)}`;
 }
 
-function removeBookFromLibrary(book) {
-    
-}
-
 function displayLib(){
+    shelf.innerHTML = '';
     myLib.forEach(book => {
         addBookToDisplay(book);       
     });
@@ -88,7 +93,6 @@ function addBookToDisplay(book) {
     removeBtn.textContent = 'x'
     bookRow.appendChild(removeBtn);    
     shelf.appendChild(bookRow);
-    // const removeBtn = document.querySelector('.remove-btn');
     removeBtn.addEventListener('click', removeBook);
 }
 
