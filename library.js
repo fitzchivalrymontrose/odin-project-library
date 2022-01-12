@@ -28,15 +28,19 @@ const shelf = document.querySelector("#table-data");
 const addBtn =  document.querySelector('#add-book');
 addBtn.addEventListener('click', addNewBook);
 
+const formBookData = document.querySelector('#book-form');
+
 function addNewBook(e){
     // make form visible
+    formBookData.classList.toggle('hidden');
+    addBtn.classList.toggle('hidden');
     // make add button invisible
 }
 
 const submitBookBtn = document.querySelector('#submit-add-book');
 submitBookBtn.addEventListener('click', createBookFromForm);
 
-const formBookData = document.querySelector('#book-form');
+
 function clearFormData(){
     formBookData.title.value = '';
     formBookData['author-name'].value = '';
@@ -48,10 +52,16 @@ function clearFormData(){
 function createBookFromForm(e){
     e.preventDefault();
     console.log('it kinda works');
+    if (formBookData.title.value === null || formBookData.title.value === undefined || formBookData.title.value === ''){
+        alert('Book needs a title.');
+        return;
+    }
     let book = new Book(formBookData.title.value, formBookData['author-name'].value, formBookData['page-count'].value, formBookData['pub-year'].value);
     addBookToLibrary(book);
     displayLib();
     clearFormData();
+    formBookData.classList.toggle('hidden');
+    addBtn.classList.toggle('hidden');
     // make form invisible
     // make add button visible
 }
