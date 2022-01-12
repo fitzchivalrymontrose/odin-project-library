@@ -29,25 +29,23 @@ const submitBookBtn = document.querySelector('#submit-add-book');
 submitBookBtn.addEventListener('click', createBookFromForm);
 const cancelBtn = document.querySelector('#cancel-add-book');
 cancelBtn.addEventListener('click', cancelAddBook);
+// add book button
 function addNewBook(e){
     formBookData.classList.toggle('hidden');
     addBtn.classList.toggle('hidden');
 }
-function cancelAddBook(e){
-    e.preventDefault();
-    clearFormData();
-    formBookData.classList.toggle('hidden');
-    addBtn.classList.toggle('hidden');
+// remove book button
+function removeBook(e){
+    delete myLib[e.target.parentElement.getAttribute('idNum')];
+    myLib = myLib.filter(el => {
+        return el != null;
+    });
+    myLib.forEach(book => {
+        book.id = `${myLib.indexOf(book)}`;
+    });
+    displayLib();
 }
-//clear form
-function clearFormData(){
-    formBookData.title.value = '';
-    formBookData['author-name'].value = '';
-    formBookData['page-count'].value = '';
-    formBookData['pub-year'].value = '';
-    formBookData['have-read'].checked = false;
-}
-// use form data to populate library
+// form submit button
 function createBookFromForm(e){
     e.preventDefault();
     console.log('it kinda works');
@@ -68,26 +66,28 @@ function createBookFromForm(e){
     formBookData.classList.toggle('hidden');
     addBtn.classList.toggle('hidden');
 }
-// remove button functionality
-function removeBook(e){
-    delete myLib[e.target.parentElement.getAttribute('idNum')];
-    myLib = myLib.filter(el => {
-        return el != null;
-    });
-    myLib.forEach(book => {
-        book.id = `${myLib.indexOf(book)}`;
-    });
-    displayLib();
+// form cancel button
+function cancelAddBook(e){
+    e.preventDefault();
+    clearFormData();
+    formBookData.classList.toggle('hidden');
+    addBtn.classList.toggle('hidden');
+}
+// read status checkbox
+function toggleHaveRead(e){
+    let book = myLib[e.target.parentElement.parentElement.getAttribute('idnum')];
+    book.toggleFinishedReading();
+ }
+function clearFormData(){
+    formBookData.title.value = '';
+    formBookData['author-name'].value = '';
+    formBookData['page-count'].value = '';
+    formBookData['pub-year'].value = '';
+    formBookData['have-read'].checked = false;
 }
 function addBookToLibrary(book){
     myLib.push(book);
     book.id = `${myLib.indexOf(book)}`;
-}
-function displayLib(){
-    shelf.innerHTML = '';
-    myLib.forEach(book => {
-        addBookToDisplay(book);       
-    });
 }
 function addBookToDisplay(book) {
     // create table row
@@ -133,10 +133,13 @@ function addBookToDisplay(book) {
     shelf.appendChild(bookRow);
     removeBtn.addEventListener('click', removeBook);
 }
-function toggleHaveRead(e){
-   let book = myLib[e.target.parentElement.parentElement.getAttribute('idnum')];
-   book.toggleFinishedReading();
+function displayLib(){
+    shelf.innerHTML = '';
+    myLib.forEach(book => {
+        addBookToDisplay(book);       
+    });
 }
+
 
 const book1 = new Book("Assassin's Fate", "Hobb, Robin", '864', '2017');
 addBookToLibrary(book1);
