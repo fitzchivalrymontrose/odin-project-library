@@ -57,6 +57,15 @@ tr:nth-child(even) {
     background-color: lightgrey;
 }
 
+tr:hover {
+    background-color: darkslateblue;
+    color: whitesmoke;
+}
+
+.remove-btn {
+    padding: 0 .5em;
+}
+
 #add-book {
     height: 40px;
     width: fit-content;

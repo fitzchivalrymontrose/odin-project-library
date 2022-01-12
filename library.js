@@ -31,10 +31,8 @@ addBtn.addEventListener('click', addNewBook);
 const formBookData = document.querySelector('#book-form');
 
 function addNewBook(e){
-    // make form visible
     formBookData.classList.toggle('hidden');
     addBtn.classList.toggle('hidden');
-    // make add button invisible
 }
 
 const submitBookBtn = document.querySelector('#submit-add-book');
@@ -46,6 +44,7 @@ function clearFormData(){
     formBookData['author-name'].value = '';
     formBookData['page-count'].value = '';
     formBookData['pub-year'].value = '';
+    formBookData['have-read'].checked = false;
 }
 
 // use form data to populate library
@@ -57,13 +56,17 @@ function createBookFromForm(e){
         return;
     }
     let book = new Book(formBookData.title.value, formBookData['author-name'].value, formBookData['page-count'].value, formBookData['pub-year'].value);
+    if (formBookData['have-read'].checked){
+        book.finishedReading = true;
+    }
+    else {
+        book.finishedReading = false;
+    }
     addBookToLibrary(book);
     displayLib();
     clearFormData();
     formBookData.classList.toggle('hidden');
     addBtn.classList.toggle('hidden');
-    // make form invisible
-    // make add button visible
 }
 
 // remove button functionality
@@ -98,10 +101,12 @@ function addBookToDisplay(book) {
         info.textContent = elem;
         bookRow.appendChild(info);
     });
+    // add checkbox for book read or not
     let removeBtn = document.createElement('button');
     removeBtn.classList.add('remove-btn');
     removeBtn.textContent = 'x'
-    bookRow.appendChild(removeBtn);    
+    bookRow.appendChild(removeBtn);
+    console.log(bookRow);    
     shelf.appendChild(bookRow);
     removeBtn.addEventListener('click', removeBook);
 }
