@@ -72,10 +72,47 @@ tr:hover {
     padding: 1em 2em;
 }
 
-footer {
-
+#add-book:hover {
+    background-color: darkslateblue;
+    color: whitesmoke;
 }
 
-.hidden {
+#book-form {
     display: none;
+    position: absolute;
+    align-self: center;
+    justify-self: center;
+    height: 60vh;
+    background-color: orangered;
+    color: paleturquoise;
+    
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 30px;
+    border-radius: 5px;
+}
+
+#have-read {
+    display: flex;
+    justify-content: space-between;
+}
+
+#cancel-add-book:hover,
+#submit-add-book:hover {
+    background-color: darkslateblue;
+    color: whitesmoke;
+}
+
+#input-buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+#cancel-add-book,
+#submit-add-book {
+    padding: .5em;
+}
+
+footer {
+
 }

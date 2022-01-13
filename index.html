@@ -32,8 +32,10 @@
 
             </tbody>
         </table>
+        
         <button id="add-book">Add a book</button>
-        <form id="book-form" class="hidden">
+        
+        <form id="book-form" >
             <label for="title">Book Title</label><br>
             <input type="text" id="title" name="title"><br>
             <label for="author-name">Author Name</label><br>
@@ -42,11 +44,14 @@
             <input type="text" id="page-count" name="page-count"><br>
             <label for="pub-year">Publication Year</label><br>
             <input type="text" id="pub-year" name="pub-year"><br>
-            
-            <input type="checkbox" id="have-read" name="have-read"><br>
-            <label for="have-read">Finished Reading</label><br>
-            <input type="submit" id="cancel-add-book" value="Cancel">
-            <input type="submit" id="submit-add-book" value="Add Book"><br>
+            <div id="have-read">
+                <input type="checkbox" id="have-read" name="have-read"><br>
+                <label for="have-read">Finished Reading</label><br>
+            </div>
+            <div id="input-buttons">
+                <input type="submit" id="cancel-add-book" value="Cancel">
+                <input type="submit" id="submit-add-book" value="Add Book"><br>
+            </div>
         </form>
     </main>
     

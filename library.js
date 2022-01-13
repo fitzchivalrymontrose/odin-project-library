@@ -31,7 +31,7 @@ const cancelBtn = document.querySelector('#cancel-add-book');
 cancelBtn.addEventListener('click', cancelAddBook);
 // add book button
 function addNewBook(e){
-    formBookData.classList.toggle('hidden');
+    formBookData.style.display = 'flex';
     addBtn.classList.toggle('hidden');
 }
 // remove book button
@@ -63,14 +63,14 @@ function createBookFromForm(e){
     addBookToLibrary(book);
     displayLib();
     clearFormData();
-    formBookData.classList.toggle('hidden');
+    formBookData.style.display = 'none';
     addBtn.classList.toggle('hidden');
 }
 // form cancel button
 function cancelAddBook(e){
     e.preventDefault();
     clearFormData();
-    formBookData.classList.toggle('hidden');
+    formBookData.style.display = 'none';
     addBtn.classList.toggle('hidden');
 }
 // read status checkbox
